@@ -1,0 +1,43 @@
+<html>
+    <head>    
+        <link rel="stylesheet" href="css/vegas-style.css" />   
+        <link rel="stylesheet" href="vegas/vegas.css" />   
+        
+        <script src="js/jquery.js"></script>
+        <script src="vegas/vegas.js"></script>
+
+        <script>
+        $(document).ready( function() {
+    
+            $.ajax({
+                url: "slides.json",
+                success: function(data) {
+
+                    $("#background-image").vegas({
+                        overlay: 'vegas/overlays/02.png',
+                        slides: data,
+                        walk: function (index, slideSettings) {
+                            $(".text-block h1").html(data[index].title)
+                            $(".text-block h4").html(data[index].subtitle)
+                        }
+                    })
+
+                }
+            })
+            
+
+
+        })  
+        </script>
+    </head>
+    <body>
+        <div id="background-image">
+            
+                <div class="text-block">
+                    <h1></h1>
+                    <h4></h4>
+                </div>
+            
+        </div>     
+    </body>
+</html>
